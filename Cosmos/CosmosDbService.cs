@@ -3,6 +3,7 @@ using Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,9 +21,11 @@ namespace Cosmos
             this._container = dbClient.GetContainer(databaseName, containerName);
         }
 
-        public async Task AddItemAsync(Review item)
+        public async Task<HttpStatusCode> AddItemAsync(House item)
         {
-            await _container.CreateItemAsync<Review>(item, new PartitionKey(item.Id.ToString()));
+            var response = await _container.CreateItemAsync<House>(item, new PartitionKey(item.Id.ToString()));
+
+            return response.StatusCode;
         }
 
         public Task DeleteItemAsync(string id)
@@ -30,11 +33,11 @@ namespace Cosmos
             throw new NotImplementedException();
         }
 
-        public async Task<Review> GetItemAsync(string id)
+        public async Task<House> GetItemAsync(string id)
         {
             try
             {
-                ItemResponse<Review> response = await _container.ReadItemAsync<Review>(id, new PartitionKey(id));
+                ItemResponse<House> response = await _container.ReadItemAsync<House>(id, new PartitionKey(id));
                 return response.Resource;
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
@@ -43,11 +46,11 @@ namespace Cosmos
             }
         }
 
-        public async Task<IEnumerable<Review>> GetItemsAsync(string queryString)
+        public async Task<IEnumerable<House>> GetItemsAsync(string queryString)
         {
-            var query = this._container.GetItemQueryIterator<Review>(new QueryDefinition(queryString));
-            var results = new List<Review>();
-           
+            var query = _container.GetItemQueryIterator<House>(new QueryDefinition(queryString));
+            var results = new List<House>();
+
             while (query.HasMoreResults)
             {
                 var response = await query.ReadNextAsync();
@@ -58,9 +61,11 @@ namespace Cosmos
             return results;
         }
 
-        public Task UpdateItemAsync(string id, Review item)
+        public async Task<HttpStatusCode> UpdateItemAsync(string id, House item)
         {
-            throw new NotImplementedException();
+            var response = await _container.UpsertItemAsync<House>(item, new PartitionKey(id));
+
+            return response.StatusCode;
         }
     }
 }

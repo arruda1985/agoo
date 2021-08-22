@@ -1,6 +1,7 @@
 ﻿using Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Shared.Interfaces
@@ -9,6 +10,7 @@ namespace Shared.Interfaces
     {
         Task<Review> Get(Guid id);
         Task<List<Review>> Get();
-        Task<Guid> Insert(Review review);
+        Task<HttpStatusCode> Insert(Review review);
+        Task<HttpStatusCode> Update(Review review);
     }
 }

@@ -1,15 +1,16 @@
 ﻿using Shared.Models;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Cosmos
 {
     public interface ICosmosDbService
     {
-        Task<IEnumerable<Review>> GetItemsAsync(string queryString);
-        Task<Review> GetItemAsync(string id);
-        Task AddItemAsync(Review item);
-        Task UpdateItemAsync(string id, Review item);
+        Task<IEnumerable<House>> GetItemsAsync(string queryString);
+        Task<House> GetItemAsync(string id);
+        Task<HttpStatusCode> AddItemAsync(House item);
+        Task<HttpStatusCode> UpdateItemAsync(string id, House item);
         Task DeleteItemAsync(string id);
     }
 }

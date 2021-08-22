@@ -3,6 +3,7 @@ using Shared.Interfaces;
 using Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Agoo.Controllers
@@ -29,9 +30,14 @@ namespace Agoo.Controllers
             return await reviewService.Get();
         }
 
-        public async Task<Guid> Get(Review review)
+        public async Task<HttpStatusCode> Post(Review review)
         {
             return await reviewService.Insert(review);
+        }
+
+        public async Task<HttpStatusCode> Patch(Review review)
+        {
+            return await reviewService.Update(review);
         }
     }
 }

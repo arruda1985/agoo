@@ -25,6 +25,7 @@ namespace Agoo
             services.AddControllers();
             services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
             services.AddTransient<IReviewService, ReviewService>();
+            services.AddTransient<IHouseService, HouseService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

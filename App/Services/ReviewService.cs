@@ -3,6 +3,7 @@ using Shared.Interfaces;
 using Shared.Models;
 using System;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace App.Services
@@ -16,17 +17,22 @@ namespace App.Services
             fixture = new Fixture();
         }
 
-        public Task<List<Review>> Get()
-        {
-            return Task.FromResult(fixture.Create<List<Review>>());
-        }
-
         public Task<Review> Get(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Guid> Insert(Review review)
+        public Task<List<Review>> Get()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpStatusCode> Insert(Review review)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<HttpStatusCode> Update(Review review)
         {
             throw new NotImplementedException();
         }
