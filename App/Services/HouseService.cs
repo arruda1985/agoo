@@ -30,6 +30,7 @@ namespace App.Services
 
         public async Task<HttpStatusCode> Insert(House house)
         {
+            house.Id = Guid.NewGuid();
             return await _cosmosDbService.AddItemAsync(house);
         }
 
