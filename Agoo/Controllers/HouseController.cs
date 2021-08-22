@@ -32,11 +32,13 @@ namespace Agoo.Controllers
             return await houseService.Get();
         }
 
+        [HttpPost]
         public async Task<HttpStatusCode> Post(House house)
         {
             return await houseService.Insert(house);
         }
 
+        [HttpPatch]
         public async Task<HttpStatusCode> Patch(House house)
         {
             return await houseService.Update(house);

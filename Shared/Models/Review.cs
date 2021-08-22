@@ -7,9 +7,14 @@ namespace Shared.Models
     {
         [JsonProperty(PropertyName = "id")]
         public Guid Id { get; set; }
+      
         [JsonProperty(PropertyName = "stars")]
         public int Stars { get; set; }
+       
         [JsonProperty(PropertyName = "fullReview")]
         public string FullReview { get; set; }
+      
+        [JsonProperty(PropertyName = "created")]
+        public DateTime Created { get; set; }
     }
 }

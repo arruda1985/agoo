@@ -1,4 +1,6 @@
-﻿using Cosmos;
+﻿using AutoFixture;
+using Cosmos;
+using Newtonsoft.Json;
 using Shared.Interfaces;
 using Shared.Models;
 using System;
@@ -21,9 +23,9 @@ namespace App.Services
             return await _cosmosDbService.GetItemAsync(id.ToString());
         }
 
-        public async Task<List<House>> Get()
+        public async Task<IEnumerable<House>> Get()
         {
-            throw new NotImplementedException();
+            return await _cosmosDbService.GetItemsAsync("SELECT * FROM c");
         }
 
         public async Task<HttpStatusCode> Insert(House house)

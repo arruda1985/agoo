@@ -10,7 +10,7 @@ namespace Shared.Interfaces
     public interface IHouseService
     {
         Task<House> Get(Guid id);
-        Task<List<House>> Get();
+        Task<IEnumerable<House>> Get();
         Task<HttpStatusCode> Insert(House house);
         Task<HttpStatusCode> Update(House house);
     }
