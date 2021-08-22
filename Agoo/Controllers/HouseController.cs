@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Dtos;
 using Shared.Interfaces;
 using Shared.Models;
 using System;
@@ -27,7 +28,7 @@ namespace Agoo.Controllers
             return await houseService.Get(id);
         }
 
-        public async Task<IEnumerable<House>> Get()
+        public async Task<IEnumerable<HouseReviews>> Get()
         {
             return await houseService.Get();
         }

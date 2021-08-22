@@ -16,5 +16,8 @@ namespace Shared.Models
       
         [JsonProperty(PropertyName = "created")]
         public DateTime Created { get; set; }
+
+        [JsonProperty(PropertyName = "houseId")]
+        public Guid HouseId { get; set; }
     }
 }

@@ -7,10 +7,13 @@ namespace Cosmos
 {
     public interface ICosmosDbService
     {
-        Task<IEnumerable<House>> GetItemsAsync(string queryString);
-        Task<House> GetItemAsync(string id);
-        Task<HttpStatusCode> AddItemAsync(House item);
-        Task<HttpStatusCode> UpdateItemAsync(string id, House item);
-        Task DeleteItemAsync(string id);
+        Task<IEnumerable<House>> GetHouses(string queryString);
+        Task<House> GetHouse(string id);
+        Task<HttpStatusCode> AddHouse(House item);
+        Task<HttpStatusCode> UpdateHouse(string id, House item);
+        Task<IEnumerable<Review>> GetReviews(string queryString);
+        Task<Review> GetReview(string id);
+        Task<HttpStatusCode> AddReview(Review item);
+        Task<HttpStatusCode> UpdateReview(string id, Review item);
     }
 }

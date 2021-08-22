@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { House } from './models/house';
-import { HouseService } from './services/house.service';
+import { HouseReviews } from './models/house-reviews';
+import { AgooService } from './services/agoo.service';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +10,15 @@ import { HouseService } from './services/house.service';
 export class AppComponent {
   title = 'agoo-app';
 
-  houses!: House[];
-  constructor(private houseService: HouseService) {
+  houses!: HouseReviews[];
+
+  constructor(private agooService: AgooService) {
 
     this.GetLastHouses();
 
   }
   GetLastHouses() {
-    this.houseService.Get().subscribe((data) => {
+    this.agooService.GetHousesReviews().subscribe((data) => {
       this.houses = data;
     });
   }
