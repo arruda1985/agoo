@@ -1,10 +1,57 @@
-<form>
-  <mat-form-field class="register-input" appearance="fill">
-    <mat-label>CEP</mat-label>
-    <input matInput placeholder="CEP" value="" />
-  </mat-form-field>
-  <mat-form-field class="register-input" appearance="fill">
-    <mat-label>Logradouro</mat-label>
-    <input matInput placeholder="Rua/Avenida/Travessa..." value="" />
-  </mat-form-field>
-</form>
+<div class="page-conainer">
+  <div class="page-header">Cadastre o imóvel</div>
+  <div class="register-container">
+    <mat-form-field class="register-input input-small" appearance="fill" mat>
+      <mat-label>CEP</mat-label>
+      <input matInput placeholder="CEP" value="" />
+    </mat-form-field>
+    <mat-form-field class="register-input input-large" appearance="fill">
+      <mat-label>Logradouro</mat-label>
+      <input matInput placeholder="Rua/Avenida/Travessa" value="" />
+    </mat-form-field>
+    <mat-form-field class="register-input input-small" appearance="fill">
+      <mat-label>Número</mat-label>
+      <input matInput placeholder="Número" value="" />
+    </mat-form-field>
+    <mat-form-field class="register-input input-large" appearance="fill">
+      <mat-label>Complemento</mat-label>
+      <input matInput placeholder="Complemento" value="" />
+    </mat-form-field>
+    <mat-form-field class="register-input input-small" appearance="fill">
+      <mat-label>Bairro</mat-label>
+      <input matInput placeholder="Bairro" value="" />
+    </mat-form-field>
+    <mat-form-field class="register-input input-small" appearance="fill">
+      <mat-label>Cidade</mat-label>
+      <input matInput placeholder="Cidade" value="" />
+    </mat-form-field>
+    <mat-form-field class="register-input input-small" appearance="fill">
+      <mat-label>Estado</mat-label>
+      <input matInput placeholder="Estado" value="" />
+    </mat-form-field>
+  </div>
+  <div class="page-header">Cadastre a expêriencia</div>
+  <div class="register-container">
+    <mat-form-field class="register-input input-full" appearance="fill">
+      <mat-label>Vizinhança</mat-label>
+      <textarea matInput placeholder="Vizinhança"></textarea>
+    </mat-form-field>
+    <mat-form-field class="register-input input-full" appearance="fill">
+      <mat-label>Estrutura</mat-label>
+      <textarea matInput placeholder="Estrutura"></textarea>
+    </mat-form-field>
+    <mat-form-field class="register-input input-full" appearance="fill">
+      <mat-label>Proprietário</mat-label>
+      <textarea matInput placeholder="Proprietário"></textarea>
+    </mat-form-field>
+    <mat-form-field class="register-input input-full" appearance="fill">
+      <mat-label>Geral</mat-label>
+      <textarea matInput placeholder="Geral"></textarea>
+    </mat-form-field>
+    <div class="register-button">
+      <div>
+        <button mat-raised-button color="primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>

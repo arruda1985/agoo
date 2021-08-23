@@ -7,6 +7,10 @@ import { AgooService } from './services/agoo.service';
 import { RegisterComponent } from './components/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, RegisterComponent],
@@ -15,8 +19,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     HttpClientModule,
     BrowserAnimationsModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
   ],
-  providers: [AgooService],
+  providers: [
+    AgooService,
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

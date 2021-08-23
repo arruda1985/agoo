@@ -1,0 +1,40 @@
+.register-container {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+  justify-content: space-between;
+  max-width: 850px;
+}
+
+.page-header {
+  padding: 20px;
+}
+
+.input-small {
+  width: 100px;
+}
+
+.input-medium {
+  width: 400px;
+}
+
+.input-large {
+  width: 60%;
+}
+
+.input-full {
+  width: 100%;
+}
+
+.container-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-button {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+  width: 100%;
+}

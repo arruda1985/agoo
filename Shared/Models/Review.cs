@@ -11,9 +11,18 @@ namespace Shared.Models
         [JsonProperty(PropertyName = "stars")]
         public int Stars { get; set; }
        
-        [JsonProperty(PropertyName = "fullReview")]
-        public string FullReview { get; set; }
+        [JsonProperty(PropertyName = "neighborhood")]
+        public string Neighborhood { get; set; }
+        
+        [JsonProperty(PropertyName = "structure")]
+        public string Structure { get; set; }
       
+        [JsonProperty(PropertyName = "landLord")]
+        public string LandLord { get; set; }
+
+        [JsonProperty(PropertyName = "general")]
+        public string General { get; set; }
+
         [JsonProperty(PropertyName = "created")]
         public DateTime Created { get; set; }
 
