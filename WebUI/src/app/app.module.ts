@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent, RegisterComponent],
@@ -21,6 +22,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    AppRoutingModule,
   ],
   providers: [
     AgooService,
