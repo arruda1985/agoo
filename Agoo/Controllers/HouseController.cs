@@ -44,5 +44,11 @@ namespace Agoo.Controllers
         {
             return await _houseService.Update(house);
         }
+
+        [HttpGet("GetByPostalCode/{postalCode}")]
+        public async Task<House> GetByPostalCode(string postalCode)
+        {
+            return await _houseService.GetByPostalCode(postalCode);
+        }
     }
 }

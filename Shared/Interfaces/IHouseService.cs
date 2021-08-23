@@ -13,5 +13,6 @@ namespace Shared.Interfaces
         Task<IEnumerable<HouseReviews>> Get();
         Task<HttpStatusCode> Insert(House house);
         Task<HttpStatusCode> Update(House house);
+        Task<House> GetByPostalCode(string postalCode);
     }
 }

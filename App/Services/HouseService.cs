@@ -1,6 +1,7 @@
 ﻿using AutoFixture;
 using Cosmos;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Shared.Dtos;
 using Shared.Interfaces;
 using Shared.Models;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace App.Services
@@ -15,6 +17,7 @@ namespace App.Services
     public class HouseService : IHouseService
     {
         private readonly ICosmosDbService _cosmosDbService;
+        static readonly HttpClient client = new HttpClient();
 
         public HouseService(ICosmosDbService cosmosDbService)
         {
@@ -42,6 +45,29 @@ namespace App.Services
             }
 
             return houseReviews;
+        }
+
+        public async Task<House> GetByPostalCode(string postalCode)
+        {
+            var postalApi = $"https://viacep.com.br/ws/{postalCode}/json";
+
+            HttpResponseMessage response = await client.GetAsync(postalApi);
+            response.EnsureSuccessStatusCode();
+
+            string responseBody = await response.Content.ReadAsStringAsync();
+
+            var jsonBody = JObject.Parse(responseBody);
+
+            return new House()
+            {
+                PostalCode = postalCode,
+                StreetName = jsonBody["logradouro"].ToString(),
+                Neighborhood = jsonBody["bairro"].ToString(),
+                City = jsonBody["localidade"].ToString(),
+                State = jsonBody["uf"].ToString(),
+                Country = "Brasil"
+
+            };
         }
 
         public async Task<HttpStatusCode> Insert(House house)
