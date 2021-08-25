@@ -33,6 +33,13 @@ namespace Agoo.Controllers
             return await _houseService.Get();
         }
 
+        [HttpGet("GetByPostalCodeAndNumber/{postalCode}/{number}")]
+        public async Task<IEnumerable<HouseReviews>> GetByPostalCodeAndNumber(string postalCode, string number)
+        {
+            return await _houseService.GetByPostalCodeAndNumber(postalCode, number);
+        }
+
+
         [HttpPost]
         public async Task<HttpStatusCode> Post(House house)
         {

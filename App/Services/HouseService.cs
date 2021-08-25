@@ -80,5 +80,26 @@ namespace App.Services
         {
             return await _cosmosDbService.UpdateHouse(house.Id.ToString(), house);
         }
+
+        public async Task<IEnumerable<HouseReviews>> GetByPostalCodeAndNumber(string postalCode, string number)
+        {
+            var houseReviews = new List<HouseReviews>();
+            var houses = _cosmosDbService.GetHouses($"SELECT * FROM c WHERE " +
+                $"c.postalCode = '{postalCode}' AND " +
+                $"c.number = '{number}' ").Result.ToList();
+
+            for (int i = 0; i < houses.Count; i++)
+            {
+
+                houseReviews.Add(new HouseReviews
+                {
+                    House = houses[i],
+                    Reviews = await _cosmosDbService.GetReviews($"SELECT * FROM c WHERE c.HouseId = '{houses[0].Id}'")
+                });
+
+            }
+
+            return houseReviews;
+        }
     }
 }
